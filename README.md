@@ -1,6 +1,6 @@
 # MAQUI: Interweaving Queries and Pattern Mining for Recursive Event Sequence Exploration
 
-MAQUI is web application that supports expressive querying and flexible pattern mining for exploring event sequence data. It is a collaborative effort between researchers at Georgia Tech and Adobe Research. For more information about the project, please refer to our paper at [IEEE VIS 2018](http://ieeevis.org/year/2018/welcome):
+MAQUI is a web application that supports expressive querying and flexible pattern mining for exploring event sequence data. It is a collaborative effort between researchers at Georgia Tech and Adobe Research. For more information about the project, please refer to our paper at [IEEE VIS 2018](http://ieeevis.org/year/2018/welcome):
 
 *[MAQUI: Interweaving Queries and Pattern Mining for Recursive Event Sequence Exploration](https://terrancelaw.github.io/publications/MAQUI_vast18.pdf)  
 [Po-Ming Law](https://terrancelaw.github.io), [Zhicheng Liu](http://www.zcliu.org), [Sana Malik](http://www.sanamalik.com), and [Rahul C. Basole](http://entsci.gatech.edu/basole/)  
@@ -14,7 +14,7 @@ IEEE Transactions on Visualization and Computer Graphics ([IEEE VIS 2018](http:/
 
 ## Running the System
 
-You need to install Python 3 (rather than Python 2), and [Flask](http://flask.pocoo.org) in order to run the system. Java is also needed as MAQUI using [SPMF](http://www.philippe-fournier-viger.com/spmf/index.php?link=license.php) for pattern mining. Chrome is recommended as the system was only tested with Chrome.
+You need to install Python 3 (rather than Python 2), and [Flask](http://flask.pocoo.org) to run the system. Java is also needed as MAQUI using [SPMF](http://www.philippe-fournier-viger.com/spmf/index.php?link=license.php) for pattern mining. Chrome is recommended as the system was only tested with Chrome.
 
 The following are the instructions and commands to run the system using a Mac:
 
