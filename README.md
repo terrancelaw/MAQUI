@@ -1,6 +1,6 @@
 # MAQUI: Interweaving Queries and Pattern Mining for Recursive Event Sequence Exploration
 
-MAQUI is web application that supports expressive querying and flexible pattern mining for exploring event sequence data. It is a collaborative effort between researchers at Georgia Tech and Adobe Research. For more information about the project, please refer to our paper at [IEEE VIS 2018](http://ieeevis.org/year/2018/welcome)):
+MAQUI is web application that supports expressive querying and flexible pattern mining for exploring event sequence data. It is a collaborative effort between researchers at Georgia Tech and Adobe Research. For more information about the project, please refer to our paper at [IEEE VIS 2018](http://ieeevis.org/year/2018/welcome):
 
 *[MAQUI: Interweaving Queries and Pattern Mining for Recursive Event Sequence Exploration](https://terrancelaw.github.io/publications/MAQUI_vast18.pdf)  
 [Po-Ming Law](https://terrancelaw.github.io), [Zhicheng Liu](http://www.zcliu.org), [Sana Malik](http://www.sanamalik.com), and [Rahul C. Basole](http://entsci.gatech.edu/basole/)  
@@ -46,7 +46,7 @@ python server.py
 
 ## Exploring Your Own Data
 
-MAQUI assumes each event to have multiple attributes. Attributes associated with an event are called event attributes. MAQUI further assumes each event sequence to have multiple attributes. These attributes associated with an event sequence are called record attributes.
+MAQUI assumes that each event has multiple attributes. Attributes associated with an event are called ***event attributes***. MAQUI further assumes each event sequence to have multiple attributes. These attributes associated with an event sequence are called ***record attributes***.
 
 For example, a patient (male, 38 year old) may went through this series of events in his visit to an emergency department: *Arrival*, *Triage Start*, *Triage End*, *Exit*. The event attribute for the first event is ***Event=Arrival***. The record attributes are ***Gender=Male***, and ***Age=38***. 
 
