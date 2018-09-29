@@ -46,9 +46,9 @@ python server.py
 
 ## Exploring Your Own Data
 
-MAQUI assumes each event to have multiple attributes. Attributes associated with an event are called event attributes. MAQUI further assumes each event sequence to have multiple attributes. These attributes are called record attributes.
+MAQUI assumes each event to have multiple attributes. Attributes associated with an event are called event attributes. MAQUI further assumes each event sequence to have multiple attributes. These attributes associated with an event sequence are called record attributes.
 
-For example, a patient (male, 38 year old) may went through a series of events in his visit to an emergency department: *Arrival*, *Triage Start*, *Triage End*, *Exit*. The event attribute for the first event is ***Event=Arrival***. The record attributes are ***Gender=Male***, and ***Age=38***. 
+For example, a patient (male, 38 year old) may went through this series of events in his visit to an emergency department: *Arrival*, *Triage Start*, *Triage End*, *Exit*. The event attribute for the first event is ***Event=Arrival***. The record attributes are ***Gender=Male***, and ***Age=38***. 
 
 While each event only has one attribute in above example, MAQUI can handle event sequence data in which an event has multiple attributes. It also works for datasets that do not contain record attributes.
 
