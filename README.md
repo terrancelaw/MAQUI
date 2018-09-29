@@ -54,6 +54,8 @@ While each event only has one attribute in above example, MAQUI can handle event
 
 Events and record attributes are stored respectively in [event.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/events.csv) and [recordAttributes.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/recordAttributes.csv) in the [data folder](https://github.com/terrancelaw/MAQUI/tree/master/data). For [event.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/events.csv), the header should be in the format "ID,time,[a list of event attributes]". Time should be in the format "2015-05-01 00:43:28". For [recordAttributes.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/recordAttributes.csv), the header should be "ID,[a list of record attributes]" *(if there are no record attributes, simply keep ID to be a unique list of ID and omit the list of record attributes)*. The character "=" should not appear in any attribute values.
 
+The current prototype should work fine for data sets that contain 100,000 to 200,000 events and a few hundreds event types for an attribute. We are working on making MAQUI more scalable:)
+
 ## Contact
 
 Please contact [Terrance Law](https://terrancelaw.github.io) for any comments and issues running the system.
