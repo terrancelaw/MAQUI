@@ -58,4 +58,4 @@ The current prototype should work fine for data sets that contain 100,000 to 200
 
 ## Contact
 
-Please contact [Terrance Law](https://terrancelaw.github.io) for any comments and issues running the system.
+Please contact [Terrance Law](https://terrancelaw.github.io) if you have any comments or encounter any issues running the system.
