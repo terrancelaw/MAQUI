@@ -28,7 +28,7 @@ git clone https://github.com/terrancelaw/MAQUI.git
 cd MAQUI
 ```
 
-3. Go to the folder named "server".
+3. Go to the [server](https://github.com/terrancelaw/MAQUI/tree/master/server) folder.
 
 ```
 cd server
