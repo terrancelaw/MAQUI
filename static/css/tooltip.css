@@ -1,0 +1,90 @@
+#my-tooltip {
+    position: absolute;
+    z-index: 5000;
+}
+
+#my-tooltip:before, #my-tooltip:after { /* animation */
+    position: absolute;
+    visibility: hidden;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -webkit-transition: 
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out,
+        -webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+    -moz-transition:    
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out,
+        -moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+    transition:         
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out,
+        transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform:    translate3d(0, 0, 0);
+    transform:         translate3d(0, 0, 0);
+    pointer-events: none;
+}
+
+#my-tooltip:before { /* appearance */
+    z-index: 1001;
+    border: 6px solid transparent;
+    background: transparent;
+    content: "";
+}
+
+#my-tooltip:after { /* appearance */
+    z-index: 1000;
+    padding: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    line-height: 1.2;
+    background-color: #000;
+    background-color: hsla(0, 0%, 20%, 0.9);
+    color: #fff;
+    content: attr(data-tooltip);
+    text-align: center;
+}
+
+#my-tooltip.top:before { /* appearance */
+    bottom: 100%;
+    left: 50%;
+    margin-left: -6px;
+    margin-bottom: -12px;
+    border-top-color: #000;
+    border-top-color: hsla(0, 0%, 20%, 0.9);
+}
+
+#my-tooltip:not(.top):before { /* appearance */
+    top: 100%;
+    bottom: auto;
+    left: 50%;
+    margin-left: -6px;
+    margin-top: -12px;
+    margin-bottom: 0;
+    border-top-color: transparent;
+    border-bottom-color: #000;
+    border-bottom-color: hsla(0, 0%, 20%, 0.9);
+}
+
+#my-tooltip.top:after { /* appearance */
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+#my-tooltip:not(.top):after { /* appearance */
+    top: 100%;
+    bottom: auto;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+/* show */
+#my-tooltip.show:before, #my-tooltip.show:after {
+    visibility: visible;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+}

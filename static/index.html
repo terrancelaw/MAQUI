@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-tooltip.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css">
+	<link rel="stylesheet" type="text/css" href="fonts/Font-Awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/font.css">
+	<link rel="stylesheet" type="text/css" href="css/tooltip.css">
+
+	<script src="vender/d3.v4.min.js"></script>
+	<script src="vender/jquery-3.2.1.min.js"></script>
+	<script src="vender/jquery.mousewheel.min.js"></script>
+	<script src="vender/bootstrap-slider.js"></script>
+	<script src="vender/tinycolor.js"></script>
+</head>
+
+<body>
+	<div id="left-column" class="noselection">
+		<div id="subsequence-view" class="ui-view">
+			<div class="container"></div>
+			<div class="toggle-name-btn" state="short"><span class="fa-exchange"></span>Change to Long Names</div>
+			<div class="add-panel-btn"><span class="fa-plus"></span>Add Panel</div>
+		</div>
+	</div>
+
+	<div id="right-column" class="noselection">
+		<div id="inspection-view" class="ui-view">
+			<div class="context-visualization">
+				<div class="container"><svg></svg></div>
+			</div>
+
+			<div class="frequent-pattern-view header">
+				<div class="container">
+					<span class="title">Frequent Patterns</span>
+					<span class="symbol fa-angle-double-up"></span>
+				</div>
+			</div>
+			
+			<div class="frequent-pattern-view content">
+				<div class="container">
+					<div class="buttons">
+						<span class="button fa-reply-all" tooltip-text="Add All Events to Selected Sequences"></span>
+						<span class="button fa-plus" tooltip-text="Add Pattern to Selected Sequences"></span>
+						<span class="button fa-caret fa-caret-down" tooltip-text="Expand Pattern"></span>
+						<span class="white-space"></span>
+					</div>
+
+					<div class="all-patterns"></div>
+				</div>
+
+				<div class="controls">
+					<div class="attribute-name" type="event" view="pattern">Attribute Name:</div>
+					<div class="minimum-support">Minimum Support:</div>
+				</div>
+				
+				<div class="loader">
+					<div class="loader-container"><div class="loader-animation"></div></div>
+				</div>
+			</div>
+
+			<div class="attribute-value-pair-view header">
+				<div class="container">
+					<span class="title">Attribute Value Pairs</span>
+					<span class="symbol fa-angle-double-up"></span>
+				</div>
+			</div>
+
+			<div class="attribute-value-pair-view content">
+				<div class="container">
+					<div class="buttons">
+						<span class="button fa-plus" tooltip-text="Add to Selected Sequences"></span>
+						<span class="white-space"></span>
+					</div>
+
+					<div class="all-attribute-value-pairs"></div>
+				</div>
+
+				<div class="controls">
+					<div class="attribute-name" type="all" view="av-pair">Attribute Name:</div>
+					<div class="time-unit">Time Unit:</div>
+				</div>
+
+				<div class="loader">
+					<div class="loader-container"><div class="loader-animation"></div></div>
+				</div>
+			</div>
+
+			<div class="raw-sequence-view header">
+				<div class="container">
+					<span class="title">Raw Event Sequences</span>
+					<span class="symbol fa-angle-double-up"></span>
+				</div>
+			</div>
+
+			<div class="raw-sequence-view content">
+				<div class="container">
+					<div class="buttons">
+						<span class="button fa-caret fa-caret-down" tooltip-text="Expand Event Sequence"></span>
+						<span class="white-space"></span>
+					</div>
+
+					<div class="all-sequences"></div>
+				</div>
+
+				<div class="controls">
+					<div class="attribute-name" type="event" view="sequence">Attribute Name:</div>
+				</div>
+				
+				<div class="loader">
+					<div class="loader-container"><div class="loader-animation"></div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="simple-context-menu" class="context-menu noselection ui-view">
+		<div class="attribute header"><span>Attribute</span></div>
+		<div class="attribute content"><select></select></div>
+
+		<div class="values header"><span>Values</span></div>
+		<div class="values search-box"><input type="text"/><span class="fa fa-search"></span></div>
+		<div class="values content"><div class="container"><div class="dummy-div"></div></div></div>
+
+		<div class="footer">
+			<div class="cancel-btn button"><i class="fa fa-remove"></i>Cancel</div>
+			<div class="confirm-btn button disabled"><i class="fa fa-check"></i>Confirm</div>
+		</div>
+
+		<span class="switch-mode-btn">To Advanced Mode</span>
+	</div>
+
+	<div id="slider-context-menu" class="context-menu noselection ui-view">
+		<div class="attribute header"><span>Record Attribute</span></div>
+		<div class="attribute content"><select></select></div>
+
+		<div class="range header">
+			<span>Range Selector</span>
+			<div class="time-unit-widget">Time unit:
+				<select>
+					<option value="sec">sec</option>
+	  				<option value="min">min</option>
+	  				<option value="hr">hr</option>
+	  				<option value="day">day</option>
+				</select>
+			</div>
+		</div>
+		<div class="range content">
+			<span class="min-text">min</span>
+			<input id="slider" data-slider-id="slider" type="text"/>
+			<span class="max-text">max</span>
+		</div>
+
+		<div class="footer">
+			<div class="cancel-btn button"><i class="fa fa-remove"></i>Cancel</div>
+			<div class="confirm-btn button"><i class="fa fa-check"></i>Confirm</div>
+		</div>
+	</div>
+	<input type="text" id="slider-range-editor"/>
+
+	<div id="advanced-context-menu" class="context-menu noselection ui-view">
+		<div class="pattern-name header"><span>Pattern Name</span></div>
+		<div class="pattern-name content"><input type="text"/></div>
+
+		<div class="pattern-editor header">
+			<span>Pattern Editor</span>
+			<span class="syntax-checker correct">Syntax: <span class="fa"></span></span>
+		</div>
+		<div class="pattern-editor content">
+			<div class="container"><svg></svg></div>
+		</div>
+
+		<div class="footer">
+			<div class="cancel-btn button"><i class="fa fa-remove"></i>Cancel</div>
+			<div class="confirm-btn button disabled"><i class="fa fa-check"></i>Confirm</div>
+		</div>
+
+		<span class="switch-mode-btn">To Simple Mode</span>
+	</div>
+
+	<div id="advanced-selection-menu" class="noselection ui-view">
+		<div class="first-column">
+			<div class="operator header"><span>Operators</span></div>
+			<div class="operator content">
+				<div class="symbol-container">
+					<span class="symbol and">AND</span><br/>
+					<span class="symbol or">OR</span><br/>
+					<span class="symbol not">NOT</span><br/>
+					<span class="symbol left-parenthesis">(</span><br/>
+					<span class="symbol right-parenthesis">)</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="second-column">
+			<div class="attribute header"><span>Attribute</span></div>
+			<div class="attribute content">
+				<select></select>
+			</div>
+
+			<div class="values header"><span>Values</span></div>
+			<div class="values search-box">
+				<input type="text"><span class="fa fa-search"></span></input>
+			</div>
+			<div class="values content">
+				<div class="container"><div class="dummy-div"></div></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="my-tooltip"></div>
+	<div id="pattern-tooltip"><svg></svg></div>
+
+	<div id="draggable-record-attribute-tag" class="noselection"></div>
+
+	<div class="inspection-view attribute-name editor noselection">
+		<span class="title">Attribute Name: </span>
+		<select></select>
+		<span class="fa fa-check"></span>
+	</div>
+
+	<div class="inspection-view minimum-support editor noselection">
+		<span class="title">Minimum Support: </span>
+		<input type="text"/>
+		<span class="fa fa-check"></span>
+	</div>
+
+	<div class="inspection-view time-unit editor noselection">
+		<span class="title">Time Unit: </span>
+		<select>
+			<option value="sec">sec</option>
+			<option value="min">min</option>
+			<option value="hr">hr</option>
+			<option value="day">day</option>
+		</select>
+		<span class="fa fa-check"></span>
+	</div>
+
+	<script src="js/subsequenceView.js"></script>
+	<script src="js/topBar.js"></script>
+	<script src="js/contextBar.js"></script>
+	<script src="js/recordAttributeBar.js"></script>
+	<script src="js/funnelVis.js"></script>
+	<script src="js/timeline.js"></script>
+	<script src="js/patternTooltip.js"></script>
+
+	<script src="js/FandSManager.js"></script>
+	<script src="js/colourManager.js"></script>
+	<script src="js/shortNameManager.js"></script>
+
+	<script src="js/contextMenu.js"></script>
+	<script src="js/simpleContextMenu.js"></script>
+	<script src="js/sliderContextMenu.js"></script>
+	<script src="js/sliderRangeEditor.js"></script>
+	<script src="js/advancedContextMenu.js"></script>
+	<script src="js/patternEditor.js"></script>
+	<script src="js/patternParser.js"></script>
+	<script src="js/syntaxChecker.js"></script>
+	<script src="js/advancedSelectionMenu.js"></script>
+
+	<script src="js/inspectionView.js"></script>
+	<script src="js/inspectionViewAttrNameEditor.js"></script>
+	<script src="js/inspectionViewMinSupEditor.js"></script>
+	<script src="js/inspectionViewTimeUnitEditor.js"></script>
+	<script src="js/inspectionViewContext.js"></script>
+	<script src="js/contextVisHelper.js"></script>
+	<script src="js/attributeValuePairView.js"></script>
+	<script src="js/attributeValuePairViewButtons.js"></script>
+	<script src="js/rawSequenceView.js"></script>
+	<script src="js/rawSequenceViewButtons.js"></script>
+	<script src="js/frequentPatternView.js"></script>
+	<script src="js/frequentPatternViewButtons.js"></script>
+
+	<script src="js/draggableRecordAttrTag.js"></script>
+	<script src="js/body.js"></script>
+	<script src="js/helper.js"></script>
+	<script src="js/webAPI.js"></script>
+	<script src="js/start.js"></script>
+</body>
