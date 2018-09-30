@@ -46,6 +46,8 @@ python server.py
 
 ## Exploring Your Own Data
 
+The [data folder](https://github.com/terrancelaw/MAQUI/tree/master/data) contains a smaller set of the [Foursquare dataset](https://sites.google.com/site/yangdingqi/home/foursquare-dataset). The following are the things you need to know while importing your own data into MAQUI.
+
 MAQUI assumes that each event has multiple attributes. Attributes associated with an event are called ***event attributes***. MAQUI further assumes each event sequence to have multiple attributes. These attributes associated with an event sequence are called ***record attributes***.
 
 For example, a patient (*male*, *38 years old*) may went through this series of events in his visit to an emergency department: *Arrival* -> *Triage Start* -> *Triage End* -> *Exit*. The event attribute for the first event is ***Event=Arrival***. The record attributes are ***Gender=Male***, and ***Age=38***. 
