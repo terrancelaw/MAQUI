@@ -36,7 +36,7 @@ cd MAQUI
 cd server
 ```
 
-***4. Start the Python server (you need Python3 for the system to work properly).***
+***4. Start the Python server (you need Python 3 for the system to work properly).***
 
 ```
 python server.py
