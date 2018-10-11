@@ -14,7 +14,7 @@ IEEE Transactions on Visualization and Computer Graphics ([IEEE VIS 2018](http:/
 
 ## Running the System
 
-You need to install Python 3 (rather than Python 2), and [Flask](http://flask.pocoo.org) to run the system. Java is also needed as MAQUI using [SPMF](http://www.philippe-fournier-viger.com/spmf/) for pattern mining. Chrome is recommended as the system was only tested with Chrome.
+You need to install Python 3 (rather than Python 2), and [Flask](http://flask.pocoo.org) to run the system. Java is also needed as MAQUI uses [SPMF](http://www.philippe-fournier-viger.com/spmf/) for pattern mining. Chrome is recommended as the system was only tested with Chrome.
 
 The following are the instructions and commands for running the system using a Mac:
 
