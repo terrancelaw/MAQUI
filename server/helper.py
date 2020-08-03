@@ -85,7 +85,7 @@ def updateSimpleSPOutput(panelID, ForSID):
 
                 # store trueStart for before and after
                 matchedEvent = inputEventSequences[ID][index]
-                matchedEventTime = datetime.strptime(matchedEvent[0], "%Y-%m-%d %H:%M:%S")
+                matchedEventTime = datetime.strptime(matchedEvent[0], "%Y-%m-%dT%H:%M:%SZ")
                 trueStartForBeforeSeq[ID] = FandS[panelIDOfInputSeq][ForSIDOfInputSeq]["trueStart"][outputTypeOfInputSeq][ID]
                 trueStartForAfterSeq[ID] = matchedEventTime
 
@@ -234,13 +234,13 @@ def updatePatternSPOutput(panelID, ForSID):
 
                 # store trueStart for before and after
                 endEventInMatchedPattern = inputEventSequences[ID][matchedPatternEndIndex]
-                timeOfEndEventInMatchedPattern = datetime.strptime(endEventInMatchedPattern[0], "%Y-%m-%d %H:%M:%S")
+                timeOfEndEventInMatchedPattern = datetime.strptime(endEventInMatchedPattern[0], "%Y-%m-%dT%H:%M:%SZ")
                 trueStartForBeforeSeq[ID] = FandS[panelIDOfInputSeq][ForSIDOfInputSeq]["trueStart"][outputTypeOfInputSeq][ID]
                 trueStartForAfterSeq[ID] = timeOfEndEventInMatchedPattern
 
                 # store trueEnd for before and after
                 startEventInMatchedPattern = inputEventSequences[ID][matchedPatternStartIndex]
-                timeOfStartEventInMatchedPattern = datetime.strptime(startEventInMatchedPattern[0], "%Y-%m-%d %H:%M:%S")
+                timeOfStartEventInMatchedPattern = datetime.strptime(startEventInMatchedPattern[0], "%Y-%m-%dT%H:%M:%SZ")
                 trueEndForBeforeSeq[ID] = timeOfStartEventInMatchedPattern
                 trueEndForAfterSeq[ID] = FandS[panelIDOfInputSeq][ForSIDOfInputSeq]["trueEnd"][outputTypeOfInputSeq][ID]
 
@@ -669,7 +669,7 @@ def getStartingSeqWithoutFilters(panelID, ForSID, outputType, IDListSatisfiedEve
                     startIndex = None
                     endIndex = index
                     startTime = None
-                    endTime = datetime.strptime(event[0], "%Y-%m-%d %H:%M:%S")
+                    endTime = datetime.strptime(event[0], "%Y-%m-%dT%H:%M:%SZ")
 
                     if not isLastPreviousSPPattern:
                         startIndex = indexOfEventMatchingLastPreviousSPoint + 1
@@ -684,7 +684,7 @@ def getStartingSeqWithoutFilters(panelID, ForSID, outputType, IDListSatisfiedEve
 
                 # handle after
                 if inputSPointAttributeValue in currentValueSetOfSelectedAttr and outputType == "after":
-                    timeOfEventMatchingInputSPoint = datetime.strptime(event[0], "%Y-%m-%d %H:%M:%S")
+                    timeOfEventMatchingInputSPoint = datetime.strptime(event[0], "%Y-%m-%dT%H:%M:%SZ")
                     timeOfLastEvent = inputTrueEndByID[ID]
                     startingEventSequencesByID[ID] = inputEventSequences[ID][index + 1:len(inputEventSequences[ID])]
                     trueStartByID[ID] = timeOfEventMatchingInputSPoint
@@ -728,12 +728,12 @@ def getStartingSeqWithoutFilters(panelID, ForSID, outputType, IDListSatisfiedEve
                 # if is match with first matcher
                 if currentEventMatchesEventMatcher and startIndexOfEventMatchingInputSPoint == None:
                     startIndexOfEventMatchingInputSPoint = index
-                    startTimeOfEventMatchingInputSPoint = datetime.strptime(event[0], "%Y-%m-%d %H:%M:%S")
+                    startTimeOfEventMatchingInputSPoint = datetime.strptime(event[0], "%Y-%m-%dT%H:%M:%SZ")
 
                 # if matched with last matcher (match the whole pattern)
                 if indexOfCurrentEventMatcher == len(orderedAVPairsForEachMatcher):
                     endIndexOfEventMatchingInputSPoint = index
-                    endTimeOfEventMatchingInputSPoint = datetime.strptime(event[0], "%Y-%m-%d %H:%M:%S")
+                    endTimeOfEventMatchingInputSPoint = datetime.strptime(event[0], "%Y-%m-%dT%H:%M:%SZ")
                     currentSequenceSatisfiesInputSPoint = True
 
                 # handle before
@@ -790,7 +790,7 @@ def getStartingSeqWithoutFilters(panelID, ForSID, outputType, IDListSatisfiedEve
 
                 # satisfies all previous splitting point
                 if currentIndexOfSPointsBeforeInput == len(allSPointsBeforeInputSPoint):
-                    timeOfEventMatchingLastPreviouSPoint = datetime.strptime(event[0], "%Y-%m-%d %H:%M:%S")
+                    timeOfEventMatchingLastPreviouSPoint = datetime.strptime(event[0], "%Y-%m-%dT%H:%M:%SZ")
                     indexOfEventMatchingLastPreviousSPoint = index
                     currentSequenceSatisfiesAllPreviousS = True
 
@@ -827,12 +827,12 @@ def getStartingSeqWithoutFilters(panelID, ForSID, outputType, IDListSatisfiedEve
                 # if is matched with first matcher
                 if currentEventMatchesEventMatcher and startIndexOfEventMatchingLastPreviousSPoint == None:
                     startIndexOfEventMatchingLastPreviousSPoint = index
-                    startTimeOfEventMatchingLastPreviousSPoint = datetime.strptime(event[0], "%Y-%m-%d %H:%M:%S")
+                    startTimeOfEventMatchingLastPreviousSPoint = datetime.strptime(event[0], "%Y-%m-%dT%H:%M:%SZ")
 
                 # if matched with last matcher (matched the pattern)
                 if indexOfCurrentEventMatcher == len(orderedAVPairsForEachMatcher):
                     endIndexOfEventMatchingLastPreviousSPoint = index
-                    endTimeOfEventMatchingLastPreviousSPoint = datetime.strptime(event[0], "%Y-%m-%d %H:%M:%S")
+                    endTimeOfEventMatchingLastPreviousSPoint = datetime.strptime(event[0], "%Y-%m-%dT%H:%M:%SZ")
                     currentIndexOfSPointsBeforeInput += 1
                     indexOfCurrentEventMatcher = 0
 

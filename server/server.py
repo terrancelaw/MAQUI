@@ -43,8 +43,8 @@ def initFandSForNewPanel():
             numberOfEventsForCurrentSequence = len(startingEventSequencesByID[ID])
             firstEvent = startingEventSequencesByID[ID][0]
             lastEvent = startingEventSequencesByID[ID][numberOfEventsForCurrentSequence - 1]
-            trueStartTime = datetime.strptime(firstEvent[0], "%Y-%m-%d %H:%M:%S")
-            trueEndTime = datetime.strptime(lastEvent[0], "%Y-%m-%d %H:%M:%S")
+            trueStartTime = datetime.strptime(firstEvent[0], "%Y-%m-%dT%H:%M:%SZ")
+            trueEndTime = datetime.strptime(lastEvent[0], "%Y-%m-%dT%H:%M:%SZ")
             trueStartByID[ID] = trueStartTime
             trueEndByID[ID] = trueEndTime
 
