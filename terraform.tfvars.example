@@ -1,0 +1,5 @@
+gcp_credentials_path = ".secrets/key_filename.json"
+
+username = "joebloggs"
+
+project = "my-project"

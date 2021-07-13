@@ -1,0 +1,4 @@
+gcloud compute ssh VM_NAME \
+    --project PROJECT_NAME \
+    --zone europe-west2-b \
+    -- -NL 2222:localhost:5000
