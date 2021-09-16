@@ -1,5 +1,11 @@
 var Helper = {
 	generateTimeString: function(timeInSecond) {
+		if (timeInSecond < 1) {
+			var timeInMillisecond = Math.round(timeInSecond * 10) / 10;
+			var timeTwoDecimal = Math.round(timeInMillisecond * 10) / 10;
+			return timeTwoDecimal > 1 ? timeTwoDecimal + " milliseconds" : timeTwoDecimal + " millisecond";
+		}
+
 		if (timeInSecond < 60) {
 			var timeTwoDecimal = Math.round(timeInSecond * 10) / 10;
 			return timeTwoDecimal > 1 ? timeTwoDecimal + " seconds" : timeTwoDecimal + " second";
