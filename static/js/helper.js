@@ -1,7 +1,7 @@
 var Helper = {
 	generateTimeString: function(timeInSecond) {
 		if (timeInSecond < 1) {
-			var timeInMillisecond = Math.round(timeInSecond * 10) / 10;
+			var timeInMillisecond = timeInSecond * 1000;
 			var timeTwoDecimal = Math.round(timeInMillisecond * 10) / 10;
 			return timeTwoDecimal > 1 ? timeTwoDecimal + " milliseconds" : timeTwoDecimal + " millisecond";
 		}
