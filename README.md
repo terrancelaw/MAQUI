@@ -14,9 +14,32 @@ IEEE Transactions on Visualization and Computer Graphics ([IEEE VIS 2018](http:/
 
 ## Running the System
 
-You need to install Python 3 (rather than Python 2), and [Flask](http://flask.pocoo.org) to run the system. Java is also needed as MAQUI uses [SPMF](http://www.philippe-fournier-viger.com/spmf/) for pattern mining. Chrome is recommended as the system was only tested with Chrome.
+You need to install Python 3 (rather than Python 2), and [Flask](http://flask.pocoo.org) to run the system. Java is also needed as MAQUI uses [SPMF](http://www.philippe-fournier-viger.com/spmf/) for pattern mining. Chrome is recommended as the system was only tested with Chrome.<br/><br/>
 
-The following are the instructions and commands for running the system using a Mac:
+### To install Flask, we recommend creating a virtual environment:<br/><br/>
+
+***1. Create a virturl environment in Python 3.***
+
+```
+python3 -m venv env
+```
+
+***2. Activate the virtual environment.***
+
+```
+source env/bin/activate
+```
+
+***3. Install Flask inside the virtual environment.***
+
+```
+pip install flask
+```
+
+Before starting the system, make sure that you have activated the virtual environment using ```source env/bin/activate```<br/><br/>
+
+### Here are the commands for running the system using a Mac:<br/><br/>
+
 
 ***1. Clone the repository using Terminal.***
 
@@ -39,7 +62,7 @@ cd server
 ***4. Start the Python server (you need Python 3 for the system to work properly).***
 
 ```
-python server.py
+python3 server.py
 ```
 
 ***5. Visit http://localhost:5000/ using Chrome.***
@@ -54,7 +77,7 @@ For example, a patient (*male*, *38 years old*) may went through this sequence o
 
 While each event only has one attribute in above example, MAQUI can handle event sequence data in which an event has multiple attributes. It also works for datasets that do not contain record attributes.
 
-Events and record attributes are stored respectively in [event.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/events.csv) and [recordAttributes.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/recordAttributes.csv) in the [data folder](https://github.com/terrancelaw/MAQUI/tree/master/data). For [event.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/events.csv), the header should be in the format "ID,time,[a list of event attributes]". Time should be in the format "2015-05-01 00:43:28". For [recordAttributes.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/recordAttributes.csv), the header should be "ID,[a list of record attributes]" *(if there are no record attributes, simply keep ID to be a unique list of IDs and omit the list of record attributes)*. The character "=" should not appear in any attribute values.
+Events and record attributes are stored respectively in [event.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/events.csv) and [recordAttributes.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/recordAttributes.csv) in the [data folder](https://github.com/terrancelaw/MAQUI/tree/master/data). For [event.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/events.csv), the header should be in the format "ID,time,[a list of event attributes]". Time should be in the format "2015-05-01 00:43:28.349". For [recordAttributes.csv](https://github.com/terrancelaw/MAQUI/blob/master/data/recordAttributes.csv), the header should be "ID,[a list of record attributes]" *(if there are no record attributes, simply keep ID to be a unique list of IDs and omit the list of record attributes)*. The character "=" should not appear in any attribute values.
 
 The current prototype should work fine for data sets that contain 100,000 to 200,000 events and a few hundreds event types for an attribute. We are working on making MAQUI more scalable:)
 
